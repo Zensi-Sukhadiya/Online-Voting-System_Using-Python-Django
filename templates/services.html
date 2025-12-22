@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Voting system - Services page {% endblock title %}
+
+{% block body %}
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+            <h2>Our Services</h2>
+          <div class="div-dec"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Results Section ***** -->
+  <section class="main-services">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="service-item">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="left-image">
+                  <img src="{% static 'assets/images/service-image-1.jpg' %}" alt="" width="540" height="420">
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="right-text-content">
+                  <i class="fas fa-user-graduate"></i>
+                  <h4>Student Voter Services</h4>
+                  <p>The online voting system provides students with a quick and secure way to register, log in, and cast their votes. Each student can vote only once, ensuring a fair election process.The voting interface is easy to use, with candidates organized by position, making selection simple. Once voting ends, students can instantly view clear and transparent results.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="service-item">
+            <div class="row">
+              <div class="col-lg-6 align-self-center">
+                <div class="left-text-content">
+                  <i class="fas fa-landmark"></i>
+                  <h4>Administrator Services</h4>
+                  <p>Administrators can easily manage candidates by adding, editing, or removing them through the admin panel. They have full control over voting sessions, including setting start and end times. Detailed reports allow monitoring of votes and voter participation, while student registrations can be reviewed and managed to ensure a smooth and secure election process.</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="right-image">
+                  <img src="{% static 'assets/images/service-image-2.jpg' %}" alt="" width="540" height="700">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="service-item last-service">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="left-image">
+                  <img src="{% static 'assets/images/service-image-3.jpg' %}" alt="" width="540" height="420">
+                </div>
+              </div>
+              <div class="col-lg-6 align-self-center">
+                <div class="right-text-content">
+                  <i class="fas fa-shield-alt"></i>
+                  <h4>Security & Compliance</h4>
+                  <p>Our system ensures secure login and session management for all users to protect access. Votes are recorded accurately with tamper-resistant safeguards to maintain data integrity. Student privacy is a top priority, with identities kept confidential while only aggregated results are shared.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% block middle %} 
+  
+    <section class="simple-cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <h4>"Empowering Voice <em>Every Student</em> - Vote <strong> Smart, Secure, </strong> &amp; <strong> Online" </strong></h4>
+          </div>
+          <div class="col-lg-7">
+            <div class="buttons">
+              <div class="green-button">
+                <a href="{% url 'about-us' %}">Discover More</a>
+              </div>
+              <div class="orange-button">
+                <a href="{% url 'contact-us' %}">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  {% endblock middle %}
+  
+
+  <section class="service-details">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="section-heading">
+            <h6>Voting System</h6>
+            <h4>Upgrade your knowledge</h4>
+          </div>
+        </div>
+        <div class="col-lg-10 offset-lg-1">
+          <div class="naccs">
+            <div class="tabs">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="menu">
+                    <div class="active gradient-border"><span>Security Measures</span></div>
+                    <div class="gradient-border"><span>User Experience Design</span></div>
+                    <div class="gradient-border"><span>Data Integrity & Transparency</span></div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <ul class="nacc">
+                    <li class="active">
+                      <div>
+                        <div class="left-image">
+                          <img src="{% static 'assets/images/service-details-01.jpg' %}" alt="">
+                        </div>
+                        <div class="right-content">
+                          <h4>Learn more about Security Measures in Online Voting</h4>
+                          <p>Security is the foundation of every trustworthy online voting system. Without proper safeguards, the integrity of elections can be compromised. A secure voting platform ensures that only eligible users can vote, prevents vote tampering, and protects user privacy through encryption and strict data handling practices.</p>
+                          <span>- Encrypted vote submission and storage</span>
+                          <span>- One-person, one-vote enforcement</span>
+                          <span class="last-span">- User authentication & session control</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image">
+                          <img src="{% static 'assets/images/service-details-02.jpg' %}" alt="" >
+                        </div>
+                        <div class="right-content">
+                          <h4>Learn more about User Experience Design in Online Voting</h4>
+                          <p>An effective voting system must be not only secure but also easy to use. A smooth, user-friendly interface encourages student participation and ensures that all users can vote without confusion or technical issues.</p>
+                          <span>- Simple and intuitive interface</span>
+                          <span>- Mobile responsiveness</span>
+                          <span class="last-span">- Accessibility for all users</span>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div>
+                        <div class="left-image">
+                          <img src="{% static 'assets/images/service-details-03.jpg' %}" alt="">
+                        </div>
+                        <div class="right-content">
+                          <h4>Learn more about Data Integrity & Transparency in Online Voting</h4>
+                          <p>Trust in an election depends on how well results reflect actual votes. Online voting systems must preserve the accuracy of data and clearly show the outcome without compromising voter privacy.</p>
+                          <span>- Real-time vote tallying</span>
+                          <span>- Transparent result publishing</span>
+                          <span class="last-span">- Tamper-proof recordkeeping</span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock body %}  

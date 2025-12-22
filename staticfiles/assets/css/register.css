@@ -1,0 +1,126 @@
+/* Register Css */
+
+html, body {
+ font-family: 'Arial', sans-serif;
+ margin: 0;
+ padding: 0;
+ background: linear-gradient(135deg, #3b2f7b 0%, #bfc0e8 50%, #3b2f7b 100%);
+ min-height: 100vh; 
+ display: flex;
+ align-items: flex-start;  /* 🔥 top par nahi chipke */
+ justify-content: center;
+ align-items: center;
+}
+
+.register-container {
+ background: radial-gradient(circle, #ffffff, #d9d9f5);
+ padding: 50px 60px;
+ border-radius: 20px;
+ box-shadow: 0 0 25px rgba(16, 9, 24, 0.3);
+ width: 100%;
+ max-width: 1200px;          /* 🔥 side ma width vadhi gayi */
+ min-height: 500px;  
+ box-sizing: border-box;
+ margin: 20px auto;
+}
+
+.logo img {
+ border-radius: 50%;
+ height: 100px;
+ width: 100px;
+ margin-bottom: 15px;
+}
+
+h2 {
+ text-align: center;
+ margin-bottom: 30px;
+ color: #1b105aff;
+}
+
+.form-group {
+ margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+ width: 100%;
+ padding: 10px;
+ border: 1px solid #071c3aff;
+ border-radius: 5px;
+ background-color: #f5f6f7;
+ font-size: 14px;
+}
+
+button {
+ width: 100%;
+ padding: 12px;
+ border: none;
+ border-radius: 5px;
+ background: linear-gradient(60deg, rgba(20, 7, 57, 1) 0%, rgba(234, 230, 238, 1) 30%, rgba(20, 7, 57, 1) 60%, rgba(234, 230, 238, 1) 100%);
+ color: #fff;
+ font-size: 16px;
+ font-weight: bold;
+ cursor: pointer;
+ margin-top: 10px;
+}
+
+button:hover {
+ background: linear-gradient(60deg, rgba(20, 7, 57, 1) 0%, rgba(234, 230, 238, 1) 30%, rgba(20, 7, 57, 1) 60%, rgba(234, 230, 238, 1) 100%);
+ color: black;
+}
+
+.separator {
+ margin: 20px 0;
+ position: relative;
+}
+
+.separator:before,
+.separator:after {
+ content: '';
+ position: absolute;
+ top: 50%;
+ width: 45%;
+ height: 1px;
+ background-color: #ddd;
+}
+
+.separator:before { left: 0; }
+.separator:after { right: 0; }
+
+.or {
+ padding: 0 10px;
+ position: relative;
+ background: #fff;
+}
+
+.login-link {
+ margin-top: 20px;
+}
+
+.login-link a {
+ color: rgb(249, 84, 92);
+ font-weight: bold;
+ text-decoration: none;
+}
+
+.error-msg {
+ color: #ff0000;
+ margin-top: 10px;
+}
+
+.register-container input:focus,
+.register-container select:focus,
+.register-container textarea:focus {
+ border-color: black !important;
+ box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+ outline: none !important;
+ color: black;
+}
+
+.register-container input,
+.register-container select {
+ width: 100% !important;  /* 👈 container ni width cover karse */
+ padding: 12px;
+ font-size: 14px;
+}

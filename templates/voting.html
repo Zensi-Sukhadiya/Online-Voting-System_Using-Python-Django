@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Voting system - Voting page {% endblock title %}
+
+{% block body %}
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+            <h2>Cast Your Vote</h2>
+            <div class="div-dec"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voting Section -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">Vote for Candidates</h2>
+        <p class="text-muted mb-1">
+          Stream: <span class="fw-semibold">{{ stream_label }}</span> &nbsp;|&nbsp;
+          Committee: <span class="fw-semibold">{{ committee_label }}</span>
+        </p>
+        <a href="{% url 'category' %}" class="small">← Change Category</a>
+      </div>
+
+      <div class="row g-4">
+        {% for c in candidates %}
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm text-center p-4 h-100 hover-box">
+            {% if c.img %}
+              <img src="{{ c.img.url }}" alt="{{ c.name }}" class="rounded-circle mx-auto mb-3" width="120" height="120" style="object-fit:cover;">
+            {% else %}
+              <!--<img src="{% static 'default-user.png' %}" alt="{{ c.name }}" class="rounded-circle mx-auto mb-3" width="120" height="120" style="object-fit:cover;">-->
+            {% endif %}
+
+            <h5 class="fw-bold mb-1">{{ c.name }}</h5>
+
+            <p class="text-muted mb-1">
+              Department: {{ c.department }}<br>
+              Year: {{ c.year|default:"-" }}<br>
+              Roll Number: {{ c.roll_no }}
+            </p>
+            
+            <p class="text-muted mb-3">{{ c.bio }}</p>
+
+            <form action="{% url 'vote' %}" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="stream" value="{{ stream_key }}">
+              <input type="hidden" name="committee" value="{{ committee_key }}">
+              <input type="hidden" name="candidate" value="{{ c.id }}">
+              <button type="submit" class="btn btn-success w-100 fw-bold">Vote {{ c.name }}</button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hover-box { transition: transform .3s, box-shadow .3s; border-radius: 1rem; }
+    .hover-box:hover { transform: translateY(-6px); box-shadow: 0 .6rem 1.2rem rgba(0,0,0,.12); }
+  </style>
+
+
+  {% block middle %} 
+  
+    <section class="simple-cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <h4>"Empowering Voice <em>Every Student</em> - Vote <strong> Smart, Secure, </strong> &amp; <strong> Online" </strong></h4>
+          </div>
+          <div class="col-lg-7">
+            <div class="buttons">
+              <div class="green-button">
+                <a href="{% url 'about-us' %}">Discover More</a>
+              </div>
+              <div class="orange-button">
+                <a href="{% url 'contact-us' %}">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  {% endblock middle %}
+  
+
+  <section class="what-we-do">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="left-content">
+            <h4>We aim to create a secure, transparent, and easy-to-use online voting platform for college students.</h4>
+            <p>"This page allows students to securely cast their votes for college elections. Simply log in, review the candidates for each position, and make your selections. Your vote is confidential, protected, and counted instantly once submitted."</p>
+            <div class="green-button">
+              <a href="{% url 'contact-us' %}">Discover More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-items">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>01</em>
+                  <h4>First Step</h4>
+                  <p>User Registration and Authentication</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>02</em>
+                  <h4>Second Step</h4>
+                  <p>Election Announcement and Candidate Details</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>03</em>
+                  <h4>Third Step</h4>
+                  <p>Casting the Vote<br><br></p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>04</em>
+                  <h4>Fourth Step</h4>
+                  <p>Real-Time Vote Counting and Results</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock body%}

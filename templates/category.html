@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Voting system - Category page {% endblock title %}
+
+{% block body %}
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="header-text">
+            <h2>Explore Voting Categories</h2>
+            <div class="div-dec"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Categories Section ***** -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="fw-bold">Vote by Category</h2>
+        <p class="text-muted">Select your candidate from each stream and submit your vote securely.</p>
+      </div>
+      <div class="row g-4">
+
+      <!-- add margin-top to row -->
+      <div class="row g-4 mt-4">
+        {% for category in categories %}
+          <div class="col-md-6">
+            <div class="card shadow-lg border-0 h-100 text-center p-5 hover-box">
+              <h3 class="mb-4 text-success fw-bold">{{ category.name }} Stream</h3>
+              <form action="{% url 'voting' %}" method="get">
+                <input type="hidden" name="stream" value="{{ category.id }}">              
+                {% for committee in category.committees.all %}
+                  <div class="form-check text-start mb-2">
+                    <input 
+                      class="form-check-input" 
+                      type="radio" 
+                      name="committee" 
+                      id="committee-{{ committee.id }}" 
+                      value="{{ committee.id }}" 
+                      required
+                    >
+                    <label class="form-check-label" for="committee-{{ committee.id }}">
+                      {{ committee.name }}
+                    </label>
+                  </div>
+                {% empty %}
+                  <p class="text-muted">No committees added yet for this category.</p>
+                {% endfor %}
+                <button type="submit" class="btn btn-success w-100 py-2 fw-bold">Submit Vote</button>
+              </form>
+            </div>
+          </div>
+        {% empty %}
+          <p class="text-center">⚠️ No categories available. Please add from Admin.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hover-box {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 1rem;
+    }
+    .hover-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    }
+  </style>
+
+    
+  {% block middle %} 
+  
+    <section class="simple-cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <h4>"Empowering Voice <em>Every Student</em> - Vote <strong> Smart, Secure, </strong> &amp; <strong> Online" </strong></h4>
+          </div>
+          <div class="col-lg-7">
+            <div class="buttons">
+              <div class="green-button">
+                <a href="{% url 'about-us' %}">Discover More</a>
+              </div>
+              <div class="orange-button">
+                <a href="{% url 'contact-us' %}">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  {% endblock middle %}
+
+
+  <!-- Category Page Description -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-1">
+        <h2 class="fw-bold">Why Voting Matters</h2>
+        <p class="text-muted">
+          <br> Student voting builds a transparent and fair environment within the college. 
+          It empowers students to actively participate in leadership, committees, 
+          and decision-making processes that shape our campus life.
+        </p>
+      </div>
+
+      <!-- add margin-top to row -->
+      <div class="row g-4 mt-3">
+
+      <div class="row g-5">
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm p-4 h-100 text-center">
+            <div class="text-success fs-1 mb-3">
+              <i class="bi bi-people-fill"></i>
+            </div>
+            <h5 class="fw-bold">Student Involvement</h5>
+            <p class="text-muted">
+              Cast your vote and take part in Student Council, Department, Events, or Sports committees. 
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm p-4 h-100 text-center">
+            <div class="text-success fs-1 mb-3">
+              <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <h5 class="fw-bold">Fair & Secure</h5>
+            <p class="text-muted">
+              Every vote is handled safely and transparently to ensure fairness for everyone. 
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm p-4 h-100 text-center">
+            <div class="text-success fs-1 mb-3">
+              <i class="bi bi-award-fill"></i>
+            </div>
+            <h5 class="fw-bold">Empowering Leaders</h5>
+            <p class="text-muted">
+              Support strong leaders who will guide and improve the future of our college community. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock body %}

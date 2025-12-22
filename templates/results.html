@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Voting system - Result page {% endblock title %}
+
+{% block body %}
+
+  <div class="page-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="header-text">
+            <h2>Election Results</h2>
+            <div class="div-dec"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ***** Results Section ***** -->
+  <section class="contact-us voting-form-section py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="text-center mb-5">
+            <h1 class="fw-bold">Live Voting Results</h1>
+            <p class="text-muted"> <br> The results are updated in real-time after voting is complete. Each candidate’s total vote count is displayed below.</p>
+          </div>
+          <div class="mb-5">
+            <h3 class="mb-3">{{ committee.name }}</h3>
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Total Votes</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in results %}
+                    <tr class="{% if tie and item.candidate in winners %} table-success fw-bold {% elif not tie and winner == item.candidate %} table-success fw-bold {% endif %}">
+                      <td>{{ item.candidate.name }}</td>
+                      <td>{{ item.votes }}</td>
+                      <td>
+                        {% if tie %}
+                          {% if item.candidate in winners %}
+                            ⚖️ Tie Winner
+                          {% else %}
+                            -
+                          {% endif %}
+                        {% else %}
+                          {% if winner == item.candidate %}
+                            🏆 Winner
+                          {% else %}
+                            -
+                          {% endif %}
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% empty %}
+                    <tr><td colspan="3">No candidates found.</td></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </section>
+
+
+  {% block middle %} 
+  
+    <section class="simple-cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <h4>"Empowering Voice <em>Every Student</em> - Vote <strong> Smart, Secure, </strong> &amp; <strong> Online" </strong></h4>
+          </div>
+          <div class="col-lg-7">
+            <div class="buttons">
+              <div class="green-button">
+                <a href="{% url 'about-us' %}">Discover More</a>
+              </div>
+              <div class="orange-button">
+                <a href="{% url 'contact-us' %}">Contact Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  {% endblock middle %}
+  
+
+  <section class="what-we-do">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="left-content">
+            <h4>We aim to deliver accurate, real-time election results to ensure transparency and trust in the college voting process.</h4>
+            <p>This page displays the live results of the college elections after voting has been completed. Once votes are submitted and the election ends, students can view the total number of votes each candidate received for every position.</p>
+            <div class="green-button">
+              <a href="{% url 'contact-us' %}">Discover More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="right-items">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>01</em>
+                  <h4>First Step</h4>
+                  <p>Secure Vote Counting</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>02</em>
+                  <h4>Second Step</h4>
+                  <p>Automatic Tally</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>03</em>
+                  <h4>Third Step</h4>
+                  <p>	Real-Time Display<br><br></p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="item">
+                  <em>04</em>
+                  <h4>Fourth Step</h4>
+                  <p>Transparent and Verified Outcome</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock body %}
