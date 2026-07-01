@@ -180,21 +180,23 @@ def vote(request):
 
 
 def login_view(request):
-    if request.user.is_authenticated:  
-        return redirect('index')      
-    
+    if request.user.is_authenticated:
+        return redirect('index')
+
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
         user = authenticate(request, username=username, password=password)
+
         if user is not None:
             login(request, user)
             return redirect('index')
         else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-    
-    return render(request, 'login.html')
+            messages.error(request, "Invalid username or password")
+            return render(request, 'login.html')
 
+    return render(request, 'login.html')
 
 def register(request):
     if request.method == "POST":
