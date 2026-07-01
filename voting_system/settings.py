@@ -128,13 +128,18 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-CSRF_COOKIE_SECURE = False  
 
-CSRF_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SAMESITE = "Lax"
 
 CSRF_COOKIE_SAMESITE = "Lax"
 
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://online-voting-system-using-python-django-aydg.onrender.com"
+]
 
 
 # Static files (CSS, JavaScript, Images)
